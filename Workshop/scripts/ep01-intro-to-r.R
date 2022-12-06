@@ -34,6 +34,9 @@
 
 # Solution:
 
+(10 + 2) / 3 ^ 2
+((10 + 2) / 3) ^ 2
+
 
 # Storing values
 a <- 3              # assign the number 3 to OBJECT (variable) called "a"
@@ -57,6 +60,13 @@ a + b               # we can add them together just like numbers
 #
 # We can also assign the result of a + b to a new variable, c. 
 # How would you do this?
+c <- a + b
+a <- 1000
+
+a + b
+
+c
+
 #
 # Solution:
 
@@ -66,6 +76,7 @@ a + b               # we can add them together just like numbers
 #
 # == != < > >= <= !
 1 < 124
+! 1 > 4
 
 #
 # Sensible object names are sensible ...
@@ -84,13 +95,15 @@ ekljre2jklwef023ijlefj93jkl23rj90f32k <- 1
 # 
 #
 # Assign the name of this workshop to a object with a good name.
+Workshop_R <- "introduction to R"
+
 #
 # Solution: [Hint:       <- "Introduction to R"]
 
 # Assign the name of video conferencing tool to an object
 #
 # Solution: [Hint:      <- "Zoom"]
-
+video_conference_tool <- "Zoom"
 
 # Which of these are valid object names: [Hint: Try them out]
 #
@@ -102,6 +115,10 @@ ekljre2jklwef023ijlefj93jkl23rj90f32k <- 1
 #  min-length
 #  2widths
 #  celsius2kelvin
+
+MaxLength <- 22
+
+
 
 
 #
@@ -118,6 +135,9 @@ weight_lb          # and so does typing the name of the object
 # weight_lb <- 57.5
 # weight_kg <- 2.20462 * weight_lb
 #
+2.20462 * weight_lb
+weight_lb <- 57.5
+weight_kg <- 2.20462 * weight_lb
 
 # 
 # Exercise
@@ -134,59 +154,93 @@ weight_lb          # and so does typing the name of the object
 # How do we do we know if our answers are correct ? 
 # [Hint: <highlight> [ALT][ENTER]
 
+mass <- 47.5
+mass <- mass * 2
+age <- 122
+age <- age - 20
+
+mass / age
+
 #
 # Topic: Comments
 #
 
 # Comments (like this one) are usually helpful
 
-     # they can also be indented
+ 1 + 1     # they can also be indented
 
 # They should be supportive (not redundant e.g. "this is a comment")
 
-# 
+# conversion from KG to Pounds is 2.334234
+ 
+
 # Exercise
 # 
 #
 # Add explanatory comments to the following lines of code
 #
 
-ft <- 3
-in <- ft * 12
-cms <- in * 2.54
-m = cms / 100
+# Start with 3 feet 
+feet <- 3 
+
+# convert to inches (beause there are 12 inches in each foot)
+inches <- feet * 12  
+
+# convert to inches to centimetres (using the conversion factor 2.540)
+centimetres <- inches * 2.54
+
+# convert to metres 
+metres = centimetres / 100
 
 #
 # Topic: Functions and Arguments
 #
 # Square Root:  sqrt()
 #
+sqrt(2)
+sqrt(9)
+sqrt(age)
+
 
 # arguments can be constants of objecs
 
 # Absolute Value: abs()
 # 
 # Decimal rounding: round(3.14159)
-
+round(3.14159)
 
 # Built-in constants: eg, pi
+round(pi)
 
 # Getting help about particular functions 
 #
 # Question Mark followed by function name, eg: ?round
-
+?round
+round (pi, digits = 5)
+round (1023.321, digits = 2)
+ 
 # or if we just want to know bount the arguments, use: args()
+args(round)
+
 
 # Argument have default order - but can re-ordered using names
 #
 # round(3.14159, 2)
 # round(digits = 2, x = 3.14159)
+round(2.14159, 2)
+round(digits = 3, x = pi)
 
 #
 # Exercise
 #
 # what does the function called log10() do ?  Can you test it ?
 #
+log10(1)
+log10(10)
+log10(100)
+log(1000, base = 10)
+
+
 # Answer:
 
 
@@ -201,17 +255,21 @@ m = cms / 100
 # Let's assign the following numbers to an object called glengths:
 #
 #  4.6, 3000, 50000
+glengths <- c(4.6, 3000, 50000)
 
 # and repeat to create a vector of species
 #
 #  "ecoli", "human", "corn"
+species <- c("ecoli", "human", "corn")
 
 # use length() to obtain how many elements a vector contains
+length(species)
 
 # we can also ask what structure of our vectors look like with str()
+str(species)
 
 # and also see what class they are with class()
-
+class(species)
 
 # and btw, there are other classes as well ...
 #
@@ -219,6 +277,7 @@ m = cms / 100
 # true_or_false_value <- TRUE
 # decimal_number = 54.0
 # whole_number = -54L
+sqrt_of_minus_one <- sqrt(-1+0i)
 
 #
 # Once we have some vectors, we can apply operations to them as a whole
@@ -226,13 +285,14 @@ m = cms / 100
 
 # multiply glengths by 5
 # add glength to itsself
+5 * glengths
 
 # appending and prepending elememts to a vector
 #
 # c(vector, value)
 # c(value, vector)
 #
-
+c(-500, glengths, glengths, 1000)
 
 
 # note all the elements of a vector must be the same type
@@ -256,7 +316,9 @@ length_species
 #   thing
 #   class(thing)
 #
-
+thing <- c("some characters", 3.141, 100, TRUE)
+thing
+class(thing)
 
 # What will happen in each of these examples?
 #
@@ -288,8 +350,12 @@ length_species
 animals <- c("mouse", "rat", "dog", "cat")
 
 # reference (access) the second element using [] 
+animals[4]
 
 # access the subset consisting of element 3 and element 2
+animals[1:4]
+animals[ c(1, 1, 1, 1, 4)]
+
 
 # we can reference each element more than once
 #
@@ -301,10 +367,14 @@ animals <- c("mouse", "rat", "dog", "cat")
 # weight_g <- c(21,   34,    39,   54,   55)
 # weight_g[   c(TRUE, FALSE, TRUE, TRUE, FALSE)]
 # 
+weight_g <- c(21,   34,    39,   54,   55)
+weight_g[   c(TRUE, FALSE, TRUE, TRUE, FALSE)]
 
 # using comparison operators to generate a 'logical' vector 
 #
 # vector of which weight are greater then 50
+weight_g > 50
+weight_g[weight_g > 50]
 
 # ... and the use this to subset the data vector
 
