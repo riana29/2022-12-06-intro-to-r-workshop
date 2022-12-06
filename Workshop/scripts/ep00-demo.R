@@ -48,3 +48,5 @@ a
 #
 # Save our Personal Access Token (PAT)
 gitcreds::gitcreds_set(url = "https://github.com")
+install.packages("gitcreds")
+
