@@ -48,5 +48,6 @@ a
 #
 # Save our Personal Access Token (PAT)
 gitcreds::gitcreds_set(url = "https://github.com")
+# gitcreds was not installed by default
 install.packages("gitcreds")
 
