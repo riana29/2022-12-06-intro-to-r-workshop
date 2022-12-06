@@ -42,6 +42,8 @@ ggplot(diamonds) +
 # Create a new Personal Access Token (PAT)
 usethis::create_github_token(scopes = 'repo', description = 'R Workshop')
 
+a
+
 # Step 2
 #
 # Save our Personal Access Token (PAT)
